@@ -1,0 +1,47 @@
+server:
+  port: 8002
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml  #mybatis配置文件所在路径
+  type-aliases-package: com.zcc.microcloud  #定义所有操作类的别名所在包
+  mapper-locations: classpath:mybatis/mapper/**/*.xml #所有mapper映射文件
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource  #配置当前要使用的数据源操作
+    driver-class-name: com.mysql.jdbc.Driver  #配置mysql驱动程序类
+    url: jdbc:mysql://localhost:3306/dept8002?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai #数据库链接地址
+    username: root  #数据库用户名
+    password: mysqladmin  #数据库密码
+    #filters: stat,wall,log4j  #配置扩展插件，常用的插件有=>stat:监控统计  log4j:日志  wall:防御sql注入
+    dbcp2:  #进行数据库连接池的配置
+      min-idle: 5 #数据库连接池的最小维持连接数
+      initial-size: 5 #初始连接数
+      max-total: 5  #最大连接数
+      max-wait-millis: 200  #等待连接获取的最大超时时间
+  application:
+    name: microcloud-provider-dept  #此模块的服务名称
+eureka:
+  client: #客户端进行eureka注册配置
+    service-url:    #Eureka客户端与Eureka服务端进行交互的地址
+      defaultZone: http://zcc:zcc@eureka-7002.com:7002/eureka,http://zcc:zcc@eureka-7001.com:7001/eureka,http://zcc:zcc@eureka-7003.com:7003/eureka  #此处eureka server需要认证，当eureka配置了密码的时候
+    healthcheck:
+      enabled: true    #开启健康检查（需要spring-boot-starter-actuator依赖）
+  instance:
+    instance-id: dept-8002.com  #在信息列表时显示主机名称
+    prefer-ip-address: true     #访问路劲变为ip地址
+    lease-renewal-interval-in-seconds: 30  #租期更新时间间隔（默认30秒）,client向server发送心跳间隔
+    lease-expiration-duration-in-seconds: 90   #租期到期时间（默认90秒）,server未在指定时间收到client心跳，则判定服务不可用
+info:   #需要spring-boot-starter-actuator包的支持，用于Eureka中查询该微服务信息
+  app.name: zcc-microcloud
+  company.name: www.zcc.com
+  build.artifactId: $project.artifactId$  #pom中的模块名称
+  build.version: $project.version$  #pom中的版本号
+
+
+#  security:
+#    user:
+#      name: zcc
+#      password: zcc
+#      roles: USER
+#spring:
+#  messages:
+#    basename: i18n/Messages,i18n/Pages

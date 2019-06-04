@@ -1,0 +1,22 @@
+server:
+  port: 7001 #端口号
+spring:
+  application:
+    name: eureka-7001 #服务模块名称
+eureka:
+  server: #一般不建议修改
+    enable-self-preservation: true   #是否开启自我保护，关闭则清除不可用的为服务信息（默认true）
+    eviction-interval-timer-in-ms: 60000 #清理间隔（单位毫秒，默认是60*1000）
+  instance:   #eureka实例定义
+    hostname: eureka-7001.com #定义eureka实例所在的主机名称，这里在hosts里映射的名称
+  client:
+    service-url:    #Eureka客户端与Eureka服务端进行交互的地址
+      defaultZone: http://zcc:zcc@eureka-7002.com:7002/eureka/,http://zcc:zcc@eureka-7003.com:7003/eureka/
+    register-with-eureka: false   #是否将自己注册到Eureka服务中,本身就是所以无需注册
+    fetch-registry: false    #是否从Eureka中获取注册信息
+security:
+  basic:
+    enabled: true
+  user:
+    name: zcc
+    password: zcc

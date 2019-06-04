@@ -1,0 +1,22 @@
+package com.zcc.service;
+
+import com.zcc.microcloud.Dept;
+import com.zcc.common.config.FeignClientConfig;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.*;
+
+/**
+ * feign客戶端，调用microcloud-provider-dept实例中的接口方法
+ * FeignClientConfig为feign客户端进行实例验证的类，此类中配置验证信息（账号和密码）
+ */
+@FeignClient(value = "microcloud-provider-dept", configuration = FeignClientConfig.class)
+public interface IDeptClientService {
+    @RequestMapping(value = "/dept/get/{id}", method = RequestMethod.GET)
+    public Object get(@PathVariable long id);
+
+    @PostMapping(value = "/dept/add")
+    public Object add(@RequestBody Dept dept);
+
+    @GetMapping(value = "/dept/list")
+    public Object list();
+}
