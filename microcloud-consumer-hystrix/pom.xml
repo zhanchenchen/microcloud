@@ -8,9 +8,9 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.zcc</groupId>
-    <artifactId>microcloud-consumer-80</artifactId>
+    <artifactId>microcloud-consumer-hystrix</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>microcloud-consumer-80</name>
+    <name>microcloud-consumer-hystrix</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -21,6 +21,10 @@
         <dependency>
             <groupId>com.zcc</groupId>
             <artifactId>microcloud-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.zcc</groupId>
+            <artifactId>microcloud-service</artifactId>
         </dependency>
         <dependency>
             <groupId>com.zcc</groupId>
@@ -40,9 +44,9 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-ribbon</artifactId>
-            <version>2.1.1.RELEASE</version>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -91,7 +95,7 @@
     </dependencies>
 
     <build>
-        <finalName>microcloud-consumer-80</finalName>
+        <finalName>microcloud-consumer-hystrix</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

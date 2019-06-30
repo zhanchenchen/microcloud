@@ -21,8 +21,13 @@
         <module>microcloud-provider-dept-8001</module>
         <module>microcloud-provider-dept-8002</module>
         <module>microcloud-provider-dept-8003</module>
+        <module>microcloud-provider-company-8101</module>
+        <module>microcloud-provider-dept-hystrix</module>
+        <module>microcloud-provide-turbine</module>
+		<module>microcloud-consumer-hystrix-dashboard</module>
         <module>microcloud-consumer-80</module>
         <module>microcloud-consumer-feign</module>
+        <module>microcloud-consumer-hystrix</module>
         <module>microcloud-security</module>
         <module>microcloud-eureka-7001</module>
         <module>microcloud-eureka-7002</module>

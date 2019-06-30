@@ -1,0 +1,20 @@
+server:
+  port: 9101
+turbine:
+  aggregator:
+    cluster-config: default # 指定聚合哪些集群，多个使用","分割，默认为default。可使用http://.../turbine.stream?cluster={clusterConfig之一}访问
+  app-config: MICROCLOUD-PROVIDER-COMPANY,MICROCLOUD-PROVIDER-DEPT #配置Eureka中的serviceId列表，表明监控哪些服务
+  cluster-name-expression: "'default'"
+      # 1. clusterNameExpression指定集群名称，默认表达式appName；此时：turbine.aggregator.clusterConfig需要配置想要监控的应用名称
+    # 2. 当clusterNameExpression: default时，turbine.aggregator.clusterConfig可以不写，因为默认就是default
+    # 3. 当clusterNameExpression: metadata['cluster']时，假设想要监控的应用配置了eureka.instance.metadata-map.cluster: ABC，则需要配置，同时turbine.aggregator.clusterConfig: ABC
+
+eureka:
+  client: #客户端进行eureka注册配置
+    service-url:    #Eureka客户端与Eureka服务端进行交互的地址
+      defaultZone: http://zcc:zcc@eureka-7002.com:7002/eureka,http://zcc:zcc@eureka-7001.com:7001/eureka,http://zcc:zcc@eureka-7003.com:7003/eureka  #此处eureka server需要认证，当eureka配置了密码的时候
+  instance:
+    instance-id: turbine-9101.com  #在信息列表时显示主机名称
+    prefer-ip-address: true     #访问路劲变为ip地址
+    lease-renewal-interval-in-seconds: 30  #租期更新时间间隔（默认30秒）,client向server发送心跳间隔
+    lease-expiration-duration-in-seconds: 90   #租期到期时间（默认90秒）,server未在指定时间收到client心跳，则判定服务不可用

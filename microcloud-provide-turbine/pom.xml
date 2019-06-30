@@ -8,9 +8,9 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.zcc</groupId>
-    <artifactId>microcloud-consumer-80</artifactId>
+    <artifactId>microcloud-provide-turbine</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>microcloud-consumer-80</name>
+    <name>microcloud-provide-turbine</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -19,34 +19,17 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.zcc</groupId>
-            <artifactId>microcloud-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.zcc</groupId>
-            <artifactId>microcloud-security</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-turbine</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-ribbon</artifactId>
-            <version>2.1.1.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -67,21 +50,9 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jetty</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
+            <!--<optional>true</optional>-->
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -91,7 +62,7 @@
     </dependencies>
 
     <build>
-        <finalName>microcloud-consumer-80</finalName>
+        <finalName>microcloud-provide-turbine</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
