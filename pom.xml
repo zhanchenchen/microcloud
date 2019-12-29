@@ -24,6 +24,7 @@
         <module>microcloud-provider-company-8101</module>
         <module>microcloud-provider-dept-hystrix</module>
         <module>microcloud-provide-turbine</module>
+		<module>microcloud-zuul-gateway</module>
 		<module>microcloud-consumer-hystrix-dashboard</module>
         <module>microcloud-consumer-80</module>
         <module>microcloud-consumer-feign</module>
@@ -204,15 +205,15 @@
     </build>
 
 
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots><!--禁止获取快照组件-->
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
+<!--    <repositories>-->
+<!--        <repository>-->
+<!--            <id>spring-milestones</id>-->
+<!--            <name>Spring Milestones</name>-->
+<!--            <url>https://repo.spring.io/milestone</url>-->
+<!--            <snapshots>&lt;!&ndash;禁止获取快照组件&ndash;&gt;-->
+<!--                <enabled>false</enabled>-->
+<!--            </snapshots>-->
+<!--        </repository>-->
+<!--    </repositories>-->
 
 </project>

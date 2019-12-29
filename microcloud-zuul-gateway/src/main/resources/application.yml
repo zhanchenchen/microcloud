@@ -1,0 +1,35 @@
+server:
+  port: 9501
+spring:
+  application:
+    name: microcloud-zuul-gateway  #此模块的服务名称'
+eureka:
+  client: #客户端进行eureka注册配置
+    service-url:    #Eureka客户端与Eureka服务端进行交互的地址
+      defaultZone: http://zcc:zcc@eureka-7002.com:7002/eureka,http://zcc:zcc@eureka-7001.com:7001/eureka,http://zcc:zcc@eureka-7003.com:7003/eureka  #此处eureka server需要认证，当eureka配置了密码的时候
+    healthcheck:
+      enabled: true    #开启健康检查（需要spring-boot-starter-actuator依赖）
+  instance:
+    instance-id: gateway-9501.com  #在信息列表时显示主机名称
+    prefer-ip-address: true     #访问路劲变为ip地址
+    lease-renewal-interval-in-seconds: 30  #租期更新时间间隔（默认30秒）,client向server发送心跳间隔
+    lease-expiration-duration-in-seconds: 90   #租期到期时间（默认90秒）,server未在指定时间收到client心跳，则判定服务不可用
+info:   #需要spring-boot-starter-actuator包的支持，用于Eureka中查询该微服务信息
+  app.name: zcc-microcloud
+  company.name: www.zcc.com
+  build.artifactId: $project.artifactId$  #pom中的模块名称
+  build.version: $project.version$  #pom中的版本号
+zuul:
+  routes:
+#    microcloud-provider-company: /company-proxy/**
+#    mycompany.path: /company-proxy/**   #mycompany只是一个逻辑名称，将path和serviceId绑定在一起
+#    myconpany.serviceId: microcloud-provider-company
+    company-proxy:  #三种路由映射都可以
+      path: /company-proxy/**
+      serviceId: microcloud-provider-company
+    dept-proxy:  #三种路由映射都可以
+      path: /dept-proxy/**
+      serviceId: microcloud-provider-dept
+  ignored-services: #无法使用任意应用名访问
+    "*"
+  prefix: /zcc-proxy    #路由前缀
